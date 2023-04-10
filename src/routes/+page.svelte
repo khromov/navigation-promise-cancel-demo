@@ -8,7 +8,7 @@
 
     const onChange = async () => {
         if($currentNavigationController?.abort) {
-            console.log('Aborting previous request');
+            console.log('Aborting previous request if it is still running');
             $currentNavigationController?.abort('There is a newer request');
         }
 

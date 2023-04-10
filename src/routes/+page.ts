@@ -7,13 +7,13 @@ export async function load({ url, fetch }) {
         const controller = new AbortController();
 	    const signal = controller.signal;
 
-        let apiFetch = fetch(`/api/echo?q=${url.searchParams.get('q')}`, { signal });
+        let apiFetch = fetch(`/api/echo?q=${url.searchParams.get('q') || ''}`, { signal });
         
         currentNavigationFetch.set(apiFetch);
         currentNavigationController.set(controller);
 
         apiValue = await (await apiFetch).json();
-        console.log('xx', apiValue);
+        console.log('Api value:', apiValue);
     }
 
     return {
